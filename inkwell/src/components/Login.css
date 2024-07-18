@@ -1,61 +1,122 @@
-/* Login.css */
+/* Ensure the whole body and html take the full height */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(45deg, white, gray, black);
+  background-size: 400% 400%;
+  animation: gradientAnimation 25s ease infinite;
+}
+
+/* Login container styling */
 .login-container {
-    max-width: 400px;
-    margin: 0 auto; 
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    background-color: rgb(226, 226, 235);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    width: 70%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  max-width: 400px;
+  margin-left:-200px;
+  margin-top:10%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: rgb(226, 226, 235);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: slideInFadeIn 2s ease-in-out forwards;
 }
 
 .login-form {
-    max-width: 400px;
-    width: 90%; /* Adjust width as needed */
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  max-width: 400px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: black;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.login-form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: blue;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-form button[type="submit"]:hover {
+  background-color: rgb(48, 48, 185);
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+}
+
+/* Gradient Animation */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .login-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .login-form label {
-    display: block;
-    margin-bottom: 10px;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .login-form input[type="email"],
-  .login-form input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    font-size: 16px;
+}
+
+/* Slide In and Fade In Animation */
+@keyframes slideInFadeIn {
+  0% {
+    top: -50%;
+    opacity: 0;
   }
-  
-  .login-form button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 3px;
-    background-color: blue;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
+  100% {
+    top: 50%;
+    opacity: 1;
   }
-  
-  .login-form button[type="submit"]:hover {
-    background-color: rgb(48, 48, 185);
+}
+
+/* Shake Animation */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
   }
-  
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}

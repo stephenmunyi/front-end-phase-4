@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './comment.css';
 
 const Comment = () => {
   const [comment, setComment] = useState('');
@@ -26,9 +27,9 @@ const Comment = () => {
   };
 
   return (
-    <div>
+    <div className="comment-container">
       <h2>Leave a Comment</h2>
-      <form onSubmit={handleSubmit}>
+      <form className="comment-form" onSubmit={handleSubmit}>
         <textarea
           value={comment}
           onChange={handleCommentChange}
@@ -39,7 +40,7 @@ const Comment = () => {
         <br />
         <button type="submit">Submit Comment</button>
       </form>
-      {alertMessage && <div>{alertMessage}</div>}
+      {alertMessage && <div className="alert-message">{alertMessage}</div>}
     </div>
   );
 };

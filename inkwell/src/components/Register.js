@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Link } from'react-router-dom';
 import './Register.css';
 
 const Register = () => {
@@ -45,6 +46,9 @@ const Register = () => {
       </div>
       <button type="submit">Register</button>
     </form>
+    <p>
+      Already have an account? <Link to="/login">Login</Link>
+    </p>
     </div>
   );
 };
