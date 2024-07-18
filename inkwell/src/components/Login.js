@@ -1,8 +1,9 @@
-// //Login.js//
+
+// // src/components/Login.js
 // import React, { useState } from 'react';
-// import './Login.css'; // Import the CSS for styling
+// import './Login.css';
 // import { useNavigate } from 'react-router-dom';
-// import { useAppContext } from './context/appContext';
+// import { useAppContext } from '../context/appContext';
 
 // function Login() {
 //   const [email, setEmail] = useState('');
@@ -53,15 +54,12 @@
 //   );
 // }
 
-// export default Login;
+// // export default Login;
 
-
-
-// src/components/Login.js
 import React, { useState } from 'react';
-import './Login.css';
+import './Login.css'; // Import the CSS for styling
 import { useNavigate } from 'react-router-dom';
-import { useAppContext } from '../context/appContext';
+import { useAppContext } from './context/appContext';
 
 function Login() {
   const [email, setEmail] = useState('');
