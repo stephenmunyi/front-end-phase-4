@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, Route } from 'react-router-dom';
-
+import { Route, Routes, Link } from 'react-router-dom'; // Ensure correct imports
 import BorrowedBooks from './BorrowedBooks';
 import FavoriteBooks from './FavoriteBooks';
 import Comment from './Comments';
@@ -9,7 +8,6 @@ import Comment from './Comments';
 const HomePage = () => {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -32,10 +30,6 @@ const HomePage = () => {
     book.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleViewDetails = (book) => {
-    setSelectedBook(book);
-  };
-
   return (
     <div>
       <nav>
@@ -55,22 +49,16 @@ const HomePage = () => {
           <li key={book.id}>
             <h3>{book.title}</h3>
             <p>{book.author}</p>
-            <button onClick={() => handleViewDetails(book)}>View Details</button>
+            <Link to={`/book/${book.id}`}>View Details</Link>
           </li>
         ))}
       </ul>
 
-      {selectedBook && (
-        <div>
-          <h2>{selectedBook.title}</h2>
-          <p>{selectedBook.author}</p>
-          {/* Render other details of the selected book */}
-        </div>
-      )}
-
-      <Route path="/borrowed" component={BorrowedBooks} />
-      <Route path="/favorite" component={FavoriteBooks} />
-      <Route path="/comment" component={Comment} />
+      <Routes>
+        <Route path="/borrowed" element={<BorrowedBooks />} />
+        <Route path="/favorite" element={<FavoriteBooks />} />
+        <Route path="/comment" element={<Comment />} />
+      </Routes>
     </div>
   );
 };
