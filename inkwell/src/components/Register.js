@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './Register.css';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,8 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="register-container">
+    <form className="register-form" onSubmit={handleSubmit}>
       <h2>Register</h2>
       <div>
         <label>Username:</label>
@@ -43,6 +45,7 @@ const Register = () => {
       </div>
       <button type="submit">Register</button>
     </form>
+    </div>
   );
 };
 
