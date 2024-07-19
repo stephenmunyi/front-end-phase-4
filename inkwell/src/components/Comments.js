@@ -65,7 +65,7 @@ const Comments = () => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get('/comments');
+      const response = await axios.get('http://127.0.0.1:5555/comment/commentlist');
       setComments(response.data);
     } catch (error) {
       console.error('Error fetching comments:', error);
@@ -80,7 +80,7 @@ const Comments = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/comments', formData);
+      await axios.post('http://127.0.0.1:5555/comment/commentlist', formData);
       fetchComments();
       setFormData({ user_id: '', book_id: '', text: '', name: 'Anonymous' });
       toast.success('Comment added successfully!');
@@ -90,27 +90,27 @@ const Comments = () => {
     }
   };
 
-  const handleUpdate = async (id, updatedText, updatedName) => {
-    try {
-      await axios.put(`/comments/${id}`, { text: updatedText, name: updatedName });
-      fetchComments();
-      toast.success('Comment updated successfully!');
-    } catch (error) {
-      console.error('Error updating comment:', error);
-      toast.error('Failed to update comment');
-    }
-  };
+  // const handleUpdate = async (id, updatedText, updatedName) => {
+  //   try {
+  //     await axios.put(`http:127.0.0.1:5555/comment/commentlist/${id}`, { text: updatedText, name: updatedName });
+  //     fetchComments();
+  //     toast.success('Comment updated successfully!');
+  //   } catch (error) {
+  //     console.error('Error updating comment:', error);
+  //     toast.error('Failed to update comment');
+  //   }
+  // };
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`/comments/${id}`);
-      fetchComments();
-      toast.success('Comment deleted successfully!');
-    } catch (error) {
-      console.error('Error deleting comment:', error);
-      toast.error('Failed to delete comment');
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await axios.delete(`http:127.0.0.1:5555/comment/commentlist/${id}`);
+  //     fetchComments();
+  //     toast.success('Comment deleted successfully!');
+  //   } catch (error) {
+  //     console.error('Error deleting comment:', error);
+  //     toast.error('Failed to delete comment');
+  //   }
+  // };
 
   return (
     <div>
@@ -153,9 +153,14 @@ const Comments = () => {
       <ul>
         {comments.map((comment) => (
           <li key={comment.id}>
+
             <p>{comment.text} - {comment.name}</p>
-            <button onClick={() => handleUpdate(comment.id, 'Updated text', 'Updated name')}>Update</button>
-            <button onClick={() => handleDelete(comment.id)}>Delete</button>
+
+            {/* <button onClick={() => handleUpdate(comment.id, 'Updated text', 'Updated name')}>Update</button>
+           
+           
+            <button onClick={() => handleDelete(comment.id)}>Delete</button> */}
+
           </li>
         ))}
       </ul>

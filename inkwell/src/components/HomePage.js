@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Route, Routes, Link } from 'react-router-dom'; // Ensure correct imports
 import BorrowedBooks from './BorrowedBooks';
-import FavoriteBooks from './FavoriteBooks';
+import FavoriteBooks from './FavouriteBooks';
 import Comment from './Comments';
 import './HomePage.css'; // Import the CSS file
 
@@ -36,7 +36,7 @@ const HomePage = () => {
       <h1>Welcome to Inkwell Bookstore</h1>
       <nav className="navigation">
         <Link to="/borrowed" className="nav-borrowed">Borrowed Books</Link>
-        <Link to="/favorite" className="nav-favorite">Favorite Books</Link>
+        <Link to="/favorite" className="nav-favorite">Favourite Books</Link>
         <Link to="/comment" className="nav-comment">Leave a Comment</Link>
         <button className="nav-button" onClick={() => alert('Displaying activity logs...')}>Activity Logs</button>
       </nav>
