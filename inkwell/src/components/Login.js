@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css';
 
@@ -8,6 +8,7 @@ const Login = () => {
     email: '',
     password: ''
   });
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -21,6 +22,7 @@ const Login = () => {
     try {
       const response = await axios.post('http://127.0.0.1:5555/auth/login', formData);
       alert('Login successful', response.data);
+      navigate('/home');
     } catch (error) {
       console.error('Error logging in', error);
       alert('Login failed');
